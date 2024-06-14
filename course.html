@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="e.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">E-Learn</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="e.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="e.html">Courses</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h1 id="course-title" class="text-center"></h1>
+        <p id="course-description" class="text-center"></p>
+        <div class="text-center">
+            <img id="course-image" src="" alt="Course Image" class="img-fluid">
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const courseId = urlParams.get('id');
+
+            const courses = [
+                {
+                    id: 1,
+                    title: 'JavaScript for Beginners',
+                    description: 'Learn the basics of JavaScript, the most popular programming language in web development.',
+                    image: 'https://courses.wscubetech.com/s/store/courses/627511fc0cf2f7ec7bf9ffd3/cover.jpg?v=1'
+                },
+                {
+                    id: 2,
+                    title: 'HTML & CSS Fundamentals',
+                    description: 'Understand the building blocks of web development with HTML and CSS.',
+                    image: 'https://miro.medium.com/v2/resize:fit:960/1*OlyP02fRFe8pEkJgb6vGTQ.png'
+                },
+                {
+                    id: 3,
+                    title: 'React.js Essentials',
+                    description: 'Dive into React.js and learn how to build dynamic web applications.',
+                    image: 'https://www.squash.io/wp-content/uploads/2023/11/javascript-series.jpg'
+                }
+            ];
+
+            const course = courses.find(c => c.id == courseId);
+
+            if (course) {
+                document.getElementById('course-title').textContent = course.title;
+                document.getElementById('course-description').textContent = course.description;
+                document.getElementById('course-image').src = course.image;
+            } else {
+                document.getElementById('course-title').textContent = 'Course not found';
+            }
+        });
+    </script>
+</body>
+</html>
